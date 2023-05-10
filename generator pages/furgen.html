@@ -1,0 +1,162 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  </head>
+  <body>
+    <div align="center">
+
+        <div id="menu">
+        <p1 style=>Fursona Generator</p1><br>
+        <p3 style="color: #b6ffae;"><b>Name;</b> </p3><p2 id="name"></p2><br>
+        <p3 style="color: #b6ffae;"><b>Species;</b> </p3><p2 id="speciesid"></p2><br>
+        <p3 style="color: #b6ffae;"><b>Traits;</b> </p3><p2 id="traits"></p2><br>
+        <p3 style="color: #b6ffae;"><b>Talent;</b> </p3><p2 id="background"></p2><br><br>
+        <br><button py-click="generate()" class="button"><img id="buttonimg" src="https://media.discordapp.net/attachments/1068262384537440387/1105998866790219776/runbuttonalt.png" onmouseover="this.src='https://cdn.discordapp.com/attachments/1068262384537440387/1105998866479861780/runbuttonalthover.png'" onmouseout="this.src='https://media.discordapp.net/attachments/1068262384537440387/1105998866790219776/runbuttonalt.png'"></button><br>
+        <br><br>
+        
+        </div>
+    </div>
+    <footer>
+    <div align=center>
+    <p4>code by <a href="https://twitter.com/terminal_rot">zanderfields</a>
+    <br>background from the old <a href="https://web.archive.org/web/20110403144851/http://www.warriorcats.com/warriorshell.html">warriorcats.com</a><br>
+    <a href="C:\Users\odela\Desktop\Folders\Scripts\cat gen site\main.html">go back?</a></p4>
+    </footer>
+    <style>
+        body {
+            background-image: url(https://cdn.discordapp.com/attachments/1068262384537440387/1105939871719247934/wcbg.jpg);
+            background-repeat: repeat;
+        }
+        
+        footer {
+            margin-top: 50px;
+        }
+        #menu {
+            margin-top: 230px;
+            width: 540px;
+            height: 336px;
+            background-image: url(https://cdn.discordapp.com/attachments/1068262384537440387/1105947263383126147/stripebgfix.png);
+            border: 2px dotted #28583F;
+            border-radius: 26px;
+            box-shadow: 0px 0px 15px black;
+        }
+
+        #buttonimg {
+            transition: 0.2s;
+        }
+
+        #buttonimg:hover {
+            transform: scale(1.1)
+            transition: 0.2s
+        }
+
+        #buttonimg:active {
+            transform: scale(0.9);
+            transition: 0.1s;
+        }
+
+        .button {
+            background: none;
+            border: none;
+        }
+
+        p1 {
+            font-family: 'Cinzel', serif;
+            font-size: 40px;
+            letter-spacing: 1px;
+            color: white;
+        }
+
+        p2 {
+            font-family: 'EB Garamond', serif;
+            font-size: 21px;
+            letter-spacing: 1px;
+            color: white;
+        }
+
+        p3 {
+            font-family: 'EB Garamond', serif;
+            font-size: 21px;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            color: white;
+        }
+
+        p4 {
+            font-family: 'EB Garamond', serif;
+            font-size: 19px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            transition: 0.2s;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: white;
+            letter-spacing: 2px;
+            transition: 0.2s;
+        }
+
+        a:visited {
+            color: white;
+        }
+    </style>
+
+
+    <py-script>
+        import random
+        from pyscript import Element
+
+        traits1 = ["frugal", "superstitious", "friendly", "generous", "ungrateful", "insecure", "uncooperative", "brilliant", "noncompetitive", "tasteless", "careless", "cheerful", "sane", "sweet", "busy", "vulnerable", "cold", "moody", "proud", "unreliable", "helpful", "envious", "peaceful", "charming", "smooth", "freethinking", "reliable", "logical", "challenging", "protective", "considerate", "artful", "unprincipled", "clean", "fair", "forgetful", "familial", "shallow", "suspicious", "agreeable", "ambitious", "sharing", "modest", "narcissistic", "whimsical", "understanding", "thoughtless", "dishonest", "independent", "faithless", "arrogant", "tidy", "casual", "contradictory", "progressive", "discreet", "principled", "compassionate", "stable", "idiosyncratic", "sentimental", "mystical", "appreciative", "witty", "warm", "erratic", "idealistic", "stoic", "deceitful", "disloyal", "cowardly", "lovable", "power-hungry", "decent", "selfless", "irritable", "dependent", "old-fashioned", "critical", "self-sufficient", "predictable", "caring", "indecisive", "treacherous", "charismatic", "companionly", "sadistic", "forgiving", "practical", "persuasive", "hardworking", "relaxed", "unpredicatable", "resentful", "solemn", "strict", "honest", "dedicated", "cautious", "adventurous", "opinionated", "reserved", "sympathetic"]
+        traits2 = ["serious", "egocentric", "self-indulgent", "passive", "pretentious", "ritualistic", "obedient", "unimaginative", "precise", "misguided", "timid", "nihilistic", "stylish", "vindictive", "secretive", "pure", "calm", "morbid", "open", "confident", "miserable", "cooperative", "insulting", "invulnerable", "innovative", "questioning", "skillful", "good-natured", "active", "meretricious", "private", "weak-willed", "childish", "sociable", "petty", "big-thinking", "noncommittal", "youthful", "presumptuous", "soft", "opportunistic", "reactive", "responsible", "overimaginative", "confused", "aimless", "clever", "stern", "huried", "unfriendly", "strong-willed", "tolerant", "perfectionist", "passionate", "stubborn", "amusing", "self-reliant", "high-spirited", "sarcastic", "contemplative", "athletic", "steadfast", "easilydiscouraged", "fearful", "competitive", "monstrous", "shy", "cruel", "sensitive", "paranoid", "organized", "selfish", "intuitive", "deep", "cultured", "absentminded", "methodical", "efficient", "self-critical", "impulsive", "argumentative", "cute", "impressionable", "urbane", "intelligent", "sophisticated", "naive", "benevolent", "apathetic", "demanding", "emotional", "daring", "solitary", "spontaneous", "skeptical", "angry", "delicate", "secure", "destructive", "courageous", "aloof", "lazy", "balanced"]
+        traits3 = ["creative", "energetic", "complex", "anxious", "weak", "insensitive", "strong", "uncomplaining", "trusting", "optimistic", "transparent", "accessible", "hostile", "reverential", "malicious", "respectful", "teacherly", "irresponsible", "suave", "captivating", "decisive", "uncaring", "outrageous", "leaderly", "scornful", "gracious", "anticipative", "thievish", "tense", "romantic", "obsessive", "troublesome", "empathetic", "focused", "conscientious", "determined", "rational", "odd", "aspiring", "possessive", "observant", "kind", "adaptable", "ignorant", "genuine", "venturesome", "deceptive", "quiet", "curious", "neutral", "impatient", "colorful", "formal", "unstable", "mature", "patient", "capable", "self-conscious", "imaginative", "wise", "single-minded", "enigmatic", "freewheeling", "admirable", "humble", "educated", "resourceful", "playful", "moralistic", "authoritarian", "gentle", "dramatic", "blunt", "humorous", "unfoolable", "knowledge", "reflective", "gullible", "irrational", "steady", "altruistic", "bloodthirsty", "bold", "careful", "faithful", "fierce", "lonesome", "loving", "loyal", "nervous", "righteous", "shameless", "sneaky", "strange", "thoughtful", "vengeful", "attention-seeker", "bossy", "bouncy", "bullying", "daydreamer", "inquisitive", "noisy", "polite"]
+        tobynames = ["Ace", "Queen", "Wilds", "Ultima", "Magician", "Mage", "Wolf", "Rose", "Graham", "Messenger", "Storm", "Lord", "Romana", "Scourge", "Alchemist", "Star", "Admin", "Arch", "Samuel", "Mandy", "Axe", "Hatchet", "Meta", "Lion", "Oliver", "Jackie", "Jacqie", "Shayne", "Parsons", "Leo", "XIV", "X", "XVI", "VI", "IV", "VII", "Zinc", "Xenon", "Coral", "Cora", "Zap", "Electro", "V", "Virus", "Vinny", "Vapor", "Dream", "Punk", "Beck"]
+        lonernames = ["Abyss", "Ace", "Alcina", "Alec", "Alice", "Amber", "Amity", "Amy", "Angel", "Anita", "Ankh", "Anubis", "Armin", "April", "Ash", "Aurora", "Azula", "Aries", "Aquarius", "Bagel", "Bailey", "Bandit", "Baby", "Baphomet", "Bastet", "Bean", "Beans", "Bede", "Belle", "Benny", "Bentley", "Bluebell", "Bolt", "Bonbon", "Bongo", "Bonnie", "Bonny", "Buddy", "Bunny", "Cake", "Callie", "Calvin", "Caramel", "Carmen", "Carmin", "Carolina", "Caroline", "Carrie", "Catie", "Cat", "Chance", "Chanel", "Chansey", "Chaos", "Charles", "Charlie", "Charlotte", "Charm", "Chase", "Cheese", "Cheesecake", "Chef", "Cherry", "Chester", "Chewie", "Chief", "Chip", "Chloe", "Chocolate", "ChocolateChip", "Chris", "Chrissy", "Cinder", "Cinderblock", "Cloe", "Cloud", "Cocoa", "Coffee", "Conan", "Cookie", "Coral", "Cosmo", "Cowbell", "Crab", "Cracker", "Cream", "Crispy", "Crow", "Cooper", "Capricorn", "Dakota", "Dan", "Dave", "Delilah", "Della", "Delta", "Dirk", "Dog", "Dolly", "Dragonfly", "Dune", "Daisy", "Mae", "Eda", "Eddie", "Eevee", "Ember", "Emerald", "Emi", "Emma", "Emy", "Erica", "Espresso", "Eve", "Evelyn", "Evie", "Evil", "Fallow", "Fang", "Fawn", "Feather", "Felix", "Fern", "Ferret", "Ferry", "Finch", "Firefly", "Fish", "Flower", "Fluffy", "Frankie", "Fred", "Fry", "Gargoyle", "Garnet", "Geode", "George", "Ghost", "Gibby", "Gir", "Gizmo", "Glass", "Glory", "Goose", "Grace", "Grain", "Guinness", "Gust", "Gemini", "Hamilton", "Hercules", "Holly", "Hop", "Hunter", "Harlequin", "Ice", "Igor", "Isabel", "Jack", "Jade", "Jaiden", "Jake", "James", "Jasper", "Jaxon", "Jay", "Jenny", "Jesse", "Jessica", "Jester", "Jethro", "Jewel", "Jewels", "Jimmy", "Jinx", "John", "Johnny", "Joker", "Jubie", "Judas", "Jude", "Judy", "Juliet", "June", "Jupiter", "Kate", "Katy", "Kenny", "Kerry", "Ketchup", "King", "Kingston", "Kip", "Kisha", "Kitty", "Klondike", "Knox", "Kodiak", "Lee", "Lemon", "Leo", "Leon", "Lex", "Lilith", "Loaf", "Lobster", "Lola", "Loona", "Lora", "Louie", "Louis", "Lucky", "Lucy", "Luke", "Luna", "Loyalty", "Libra", "Madi", "Manda", "Mange", "Mango", "Marceline", "Matcha", "Maverick", "Max", "Maxx", "May", "Melody", "Meow-Meow", "Mera", "Mew", "Miles", "Millie", "Milo", "Milque", "Mimi", "Minette", "Mini", "Minna", "Minnie", "Mint", "Minty", "Mittens", "Mocha", "Mojo", "Mollie", "Molly", "Monster", "Monte", "Moon", "Mucha", "Murder", "Mushroom", "Mitaine", "Neil", "Nemo", "Nessie", "Nick", "Nightmare", "Niles", "Nitro", "Nova", "Nuka", "Oakley", "Oleander", "Oliver", "Oliva", "Ollie", "Onyx", "Ophelia", "Orion", "Oscar", "Owen", "Peach", "Peanut", "Pear", "Pearl", "Pecan", "Penny", "Peony", "Pepper", "Pickles", "Ping", "Piper", "Pipsqueak", "Pocket", "Poki", "Polly", "Pong", "Poopy", "Porsche", "Potato", "Prickle", "Princess", "Punk", "Pisces", "Quake", "Queen", "Quest", "Quinn", "Ramble", "Randy", "Rarity", "Rat", "Ray", "Reese", "Ren", "Riot", "River", "Rocket", "Roman", "Rory", "Rose", "Ruby", "Rue", "Rum", "Sadie", "Salt", "Sam", "Sandy", "Scourge", "Seamus", "Shimmer", "Shiver", "Silva", "Silver", "Smudge", "Socks", "Sol", "Soul", "Sophie", "Spam", "Sparky", "Spots", "Star", "Stella", "Steve", "Steven", "Stolas", "Stripes", "Sundae", "Sunny", "Sunset", "Sweet", "Sweetie", "Scorpio", "Tabatha", "Tabby", "Tasha", "Tempest", "Tetris", "Teufel", "Tiny", "Toffee", "Tom", "Toni", "Toothless", "Torque", "Treasure", "Trouble", "Tucker", "Turbo", "Twilight", "Twister", "Taurus", "Union", "Uriel", "Vanilla", "Venture", "Via", "Viktor", "Vinnie", "Violet", "Vivienne", "Void", "Voltage", "Vox", "Virgo", "Wanda", "Washington", "Wendy", "Whiskers", "Whisper", "Windy", "Wishbone", "Whiskey", "Wisp", "Wisteria", "Worm", "X'ek", "Zim", "Zoe"]
+        prespecies = ["demon ", "were-", "angel ", "plush "]
+        species = ["ampwave", "lykoi", "australian shepherd", "golden eagle", "husky", "tanuki", "silver fox", "icelandic horse", "andalusian", "spanish galgo", "sloughi", "sergal", "dalmatian", "percheron", "maned wolf", "mouse", "tasmanian devil", "deer", "parrot", "tosa inu wolf", "aidi", "jagdterrier", "markiesje", "dachshund", "possum", "house finch", "lynx", "cheetah", "african wild dog", "marble fox", "snow leopard", "raven", "turkish angora", "doberman", "dragon", "possum", "tornjak", "otter", "coyote", "pigeon", "lipizzan", "fennec", "siberian tiger", "wildebeest", "zebra", "irish wolfhound", "lion", "crow", "dutch warmblood", "horse", "wild dog", "labrador retriever", "skulldog", "raccoon", "malamute", "hyena", "doberman", "moose", "fox", "raccoon", "grizzly bear", "cougar", "panther", "raven", "dingo", "falabella", "cat", "rat", "clydesdale", "akita", "arctic fox", "fox", "leopard", "lynx", "deer", "wolf", "coyote", "barn owl", "moose", "tiger", "mouse", "boxer", "polar bear", "hyena", "badger", "dog", "stiklis", "arabian horse", "snowy owl", "crow", "eagle", "darwin's fox", "german shepherd", "donkey", "cat", "snow leopard", "gazelle", "husky", "blue jay", "binturong", "pomeranian", "borzoi", "goat", "jaguar", "golden retriever", "harpy eagle", "reindeer", "irish wolf hound", "rat", "tyto owl"]
+        talents1x = ["fighter", "professor", "teacher", "medic", "writer", "musician", "artist", "painter", "architect", "prophet", "telepathic", "telekenetic", "premonitions", "alchemist", "magic", "hitman"]
+        
+        
+        def generate():
+            namepick1 = random.choice(tobynames)
+            namepick2 = random.choice(lonernames)
+            trait1c = random.choice(traits1)
+            trait2c = random.choice(traits2)
+            trait3c = random.choice(traits3)
+            speciesc = random.choice(species)
+            prespeciesc = random.choice(prespecies)
+            talentc = random.choice(talents1x)
+            namep1 = Element('name')
+            speciesp1 = Element('speciesid')
+            trp1 = Element('traits')
+            bgp1 = Element('background')
+            numb1 = random.randint(1,6)
+            namef1 = [namepick1, namepick2]
+            namefin = random.choice(namef1)
+            if numb1 == 6:
+                namep1.write(f'{namefin}')
+                speciesp1.write(f'{prespeciesc.capitalize()}{speciesc}')
+                trp1.write(f'{trait1c.capitalize()}, {trait2c}, & {trait3c}')
+                bgp1.write(f'{talentc.capitalize()}')
+            else:
+                namep1.write(f'{namefin}')
+                speciesp1.write(f'{speciesc.capitalize()}')
+                trp1.write(f'{trait1c.capitalize()}, {trait2c}, & {trait3c}')
+                bgp1.write(f'{talentc.capitalize()}')            
+
+
+        
+
+    </py-script>
+  </body>
+</html>
