@@ -1,0 +1,133 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  </head>
+  <body>
+    <div align="center">
+
+        <div id="menu">
+        <p1 style=>Plot Generator</p1><br>
+        <p2 id="name"></p2><br></p2>
+        <br><button py-click="generate()" class="button"><img id="buttonimg" src="https://media.discordapp.net/attachments/1068262384537440387/1105998866790219776/runbuttonalt.png" onmouseover="this.src='https://cdn.discordapp.com/attachments/1068262384537440387/1105998866479861780/runbuttonalthover.png'" onmouseout="this.src='https://media.discordapp.net/attachments/1068262384537440387/1105998866790219776/runbuttonalt.png'"></button><br>
+        <br><br>
+        
+        </div>
+    </div>
+    <footer>
+    <div align=center>
+    <p4>code by <a href="https://twitter.com/terminal_rot">zanderfields</a> / plots from <a href="https://tvtropes.org">tvtropes</a>
+    <br>background from the old <a href="https://web.archive.org/web/20110403144851/http://www.warriorcats.com/warriorshell.html">warriorcats.com</a><br>
+    <a href="C:\Users\odela\Desktop\Folders\Scripts\cat gen site\main.html">go back?</a></p4>
+    </footer>
+    <style>
+        body {
+            background-image: url(https://cdn.discordapp.com/attachments/1068262384537440387/1105939871719247934/wcbg.jpg);
+            background-repeat: repeat;
+        }
+        
+        footer {
+            margin-top: 50px;
+        }
+        #menu {
+            margin-top: 230px;
+            width: 540px;
+            height: 336px;
+            background-image: url(https://cdn.discordapp.com/attachments/1068262384537440387/1105947263383126147/stripebgfix.png);
+            border: 2px dotted #28583F;
+            border-radius: 26px;
+            box-shadow: 0px 0px 15px black;
+        }
+
+        #buttonimg {
+            transition: 0.2s;
+            bottom: 47.5%;
+            left: 47.5%;
+            position: absolute;
+        }
+
+        #buttonimg:hover {
+            transform: scale(1.1)
+            transition: 0.2s
+        }
+
+        #buttonimg:active {
+            transform: scale(0.9);
+            transition: 0.1s;
+        }
+
+        .button {
+            background: none;
+            border: none;
+        }
+
+        p1 {
+            font-family: 'Cinzel', serif;
+            font-size: 40px;
+            letter-spacing: 1px;
+            color: white;
+        }
+
+        p2 {
+            font-family: 'EB Garamond', serif;
+            font-size: 25px;
+            letter-spacing: 1px;
+            color: white;
+        }
+
+        p3 {
+            font-family: 'EB Garamond', serif;
+            font-size: 21px;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            color: white;
+        }
+
+        p4 {
+            font-family: 'EB Garamond', serif;
+            font-size: 19px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            transition: 0.2s;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: white;
+            letter-spacing: 2px;
+            transition: 0.2s;
+        }
+
+        a:visited {
+            color: white;
+        }
+    </style>
+
+
+    <py-script>
+        import random
+        from pyscript import Element
+
+        problems = ["A person performs a heroic action by complete accident.", "A character doesn't fulfil their expected role.", "A story's buildup gets its payoff. A later event renders it meaningless.", "An Unlikely Hero is the only one who can solve the problem.", "Other worlds similar to ours, but with key differences.", "A character would be able to deal with this easily if they had their memories. Unfortunately, they don't.", "A sick character is really annoying to their caretaker.", "A character misinteprets a series of events and thinks they see a conspiracy where none exists.", "The villain feels sorry for the hero's death.", "A character finds an item that is deemed to give bad luck.", "Someone takes in the hero and seems (at first) to be helping, but they have ulterior motives.", "A Character makes a wish and finds out the hard way that their desire has its downsides.", "A brainwashed character is sent to hurt or kill their friends.", "A group of characters gets stuck together and end up bonding.", "A group in distress sends one of their own to get help for them.", "A character with powers loses or is stripped of them, and must cope without them and/or get them back.", "Characters go crazy from being cooped up in an isolated area for an extended period with no outside contact.", "Sibling rivalry turns into bitter, murderous hatred.", "A promised reward turns out to be nothing but a lie.", "Someone has to prove they're innocent of the crime they're accused of committing.", "No way to get out. No way to get help. You're on your own.", "In a survival situation, can killing one to save others be a solution?", "Two enemies make a deal with each other without ending their conflict.", "Pull too many deliberate false alarms and no one will believe you when you're trying to warn about real danger.", "An enemy or obstacle is extremely dangerous, but only for a finite period of time. The plot comes from surviving or avoiding this danger.", "Character visits an alternate reality where their counterpart has died.", "Death game", "Character gets an enormous power boost, at the eventual cost of his/her life.", "A superpowered character loses their powers.", "The plan goes horribly wrong, but the heroes achieve their goal anyway.", "Terrible things happen to those who wander into the forest.", "A nuke or other weapon of mass destruction has gone missing, and now the race is on to retrieve it before it falls into the wrong hands.", "The story is set during the end of a particular era.", "The hero and the villain reluctantly join forces to defeat a mutual enemy.", "A character is trapped in a horror setting from which they must escape.", "A work where all but one character is dead.", "A character is put through a grueling test that turns out to be fake.", "A \"utopian\" setting that turns out to be anything but, usually with a horrible secret involved.", "Characters are forced to make a dangerous and likely-deadly journey on foot through hostile territory.", "A character willingly betrays the protagonists for benevolent reasons.", "A character becomes rich, but then ends up losing their wealth.", "Doing anything, no matter how unethical or bizarre, for the sake of scientific progress.", "In order to be forgiven for their crimes, the character must die.", "A creator gets trapped within their own creation.", "An insignificant loser becomes the scariest villain alive.", "A seemingly harmless game haunts or harms the people that play it.", "A gameshow or carnival that turns into a nightmare-ish dreamscape", "Conflict arises due to unresolved baggage passed down from generation to generation.", "An evil tyrant or regime seeks to wipe out a people because they fear they are a threat to their power. Unfortunately for them, someone/a group manages to survive.", "Status as a deity proves to be too much responsibility and absolute power corrupts.", "A group of characters fall prey to greed and turn on each other while on the hunt for gold or some other fabulous treasure.", "A character who longs to leave their terrible life behind to go somewhere they think is better.", "Someone ends up trapped in a loop where they experience the same day repeatedly.", "Two heroes who are anything but on the best of terms with each other.", "A hero loses their powers, allowing someone else to take their place until their powers return.", "A character's journey to get back home.", "Characters are forced to experience life through another's perspective.", "An innocent character is exposed to true evil, or the uglier side of the world, for the first time.", "Someone is shown what the world would be like if they never existed.", "A character enters the physical manifestation of someone's/their own mind.", "The hero offers their antagonist a chance to kill them, knowing the other person isn't so far gone as to commit murder.", "Something bad has happened in the location, and the character arrives too late to prevent it.", "A character gets everything they want, but loses everything and everyone they loved in the process.", "Someone is trapped in a dream-like fantasy where everything's the way it should be to make the person happy and content.", "The annoyance of having to put up with certain people causes a person to develop a hatred of humanity.", "When someone believes their goals were given to them by orders from a God", "Villain lets themselves die so their plan may continue.", "A person or group of people are invited to a party or any other form of get-together. However, it's just an excuse to get them all together and kill them.", "A place that prevents you from leaving.", "A character tries to rediscover who they are.", "A character wants the gods to pay for what they've done.", "A character swears to do something without much thought and must choose between keeping their word or suffering the consequences of their lack of foresight.", "A character discovers that they must kill something/someone in order to prove their worth.", "Rescuing someone who is trapped in the afterlife.", "The world is just too far gone, so the only way to save it is to destroy it and start over.", "The proper ruler comes back to fix everything after things have gone to hell in their absence.", "Any river voyage or wilderness journey is a doomed expedition in which the characters alternately die, go mad, get lost, or otherwise barely live to tell the tale.", "A character is pushed so far over the edge and goes completely ballistic on those that hurt them.", "Saving a god from danger.", "It's never completely clear whether everything is real or not.", "There's a murderer on the loose, and people are dying one by one."]
+        
+        
+        def generate():
+            namep1 = Element('name')
+            plotc = random.choice(problems)
+            namep1.write(f'{plotc}')     
+
+
+        
+
+    </py-script>
+  </body>
+</html>
